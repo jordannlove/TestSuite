@@ -1,4 +1,4 @@
 I anticipate the following bugs:
 
-addFront: doesn't increment size beyond initial node of linkedlist
-addBack: doesn't increment size beyond initial node of linkedlist
+removeBack: doesn't decrement the size of the list after removal
+removeFront: doesn't decrement the size of the list after removal

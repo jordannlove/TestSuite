@@ -27,6 +27,16 @@ void Test::runTests()
     std::cout << "FAILED\n";
   }
 
+  std::cout << "checkSize: ";
+  if(checkSize() == true)
+  {
+    std::cout << "passed\n";
+  }
+  else
+  {
+    std::cout << "FAILED\n";
+  }
+
   std::cout << "addToFront: ";
   if(addToFront() == true)
   {
@@ -78,7 +88,10 @@ void Test::runTests()
   }
 }
 
+//////////////
+//test methods
 
+//////////////////////
 bool Test::emptyList()
 {
   bool test1;
@@ -98,15 +111,67 @@ bool Test::emptyList()
 }
 
 
+//////////////////////
+bool Test::checkSize()
+{
+  bool test1;
+  bool test2;
+  bool test3;
+  LinkedListOfInts list1;
+  LinkedListOfInts list2;
+  LinkedListOfInts list3;
+
+  //see if list size is correct after adding/removing one item from front
+  list1.addFront(1);
+  list1.removeFront();
+  if(list1.size() == 0)
+  {
+    test1 = true;
+  }
+  else
+  {
+    test1 = false;
+  }
+
+  //see if list size is correct after adding/removing one item from back
+  list2.addBack(1);
+  list2.removeBack();
+  if(list2.size() == 0)
+  {
+    test2 = true;
+  }
+  else
+  {
+    test2 = false;
+  }
+
+  //check that empty list has size zero
+  if( list3.isEmpty() && (list3.size() == 0) )
+  {
+    test3 = true;
+  }
+  else
+  {
+    test3 = false;
+  }
+
+  return(test1 && test2 && test3);
+}
+
+
+///////////////////////
 bool Test::addToFront()
 {
   bool test1;
   bool test2;
-  LinkedListOfInts list;
+  bool test3;
+  LinkedListOfInts list1;
+  LinkedListOfInts list2;
+  LinkedListOfInts list3;
 
   //see if size increments with one addFront
-  list.addFront(12);
-  if( list.size() == 1 )
+  list1.addFront(12);
+  if( list1.size() == 1 )
   {
     test1 = true;
   }
@@ -118,31 +183,45 @@ bool Test::addToFront()
   //check that addFront handles addition of 20 items
   for(int x = 0; x < 20; x++)
   {
-    list.addFront(x);
+    list2.addFront(x);
   }
-  if(list.size() == 20)
+  if(list2.size() == 20)
   {
     test2 = true;
   }
   else
   {
     test2 = false;
-    return (test2);
   }
 
-  return(test1 && test2);
+  //check that addFront actually adds items
+  list3.addFront(17);
+  if(list3.search(17) == true)
+  {
+    test3 = true;
+  }
+  else
+  {
+    test3 = false;
+  }
+
+  return(test1 && test2 && test3);
 }
 
 
+//////////////////////
 bool Test::addToBack()
 {
   bool test1;
   bool test2;
-  LinkedListOfInts list;
+  bool test3;
+  LinkedListOfInts list1;
+  LinkedListOfInts list2;
+  LinkedListOfInts list3;
 
   //see if size increments with one addFront
-  list.addBack(12);
-  if( list.size() == 1 )
+  list1.addBack(12);
+  if( list1.size() == 1 )
   {
     test1 = true;
   }
@@ -154,26 +233,38 @@ bool Test::addToBack()
   //check that addBack handles addition of 20 items
   for(int x = 0; x < 20; x++)
   {
-    list.addBack(x);
+    list2.addBack(x);
   }
-  if(list.size() == 20)
+  if(list2.size() == 20)
   {
     test2 = true;
   }
   else
   {
     test2 = false;
-    return (test2);
   }
 
-  return(test1 && test2);
+  //check that addBack actually adds items
+  list3.addBack(17);
+  if(list3.search(17) == true)
+  {
+    test3 = true;
+  }
+  else
+  {
+    test3 = false;
+  }
+
+  return(test1 && test2 && test3);
 }
 
 
+///////////////////////
 bool Test::checkSearch()
 {
   bool test1 = true;
   bool test2;
+  bool test3;
   LinkedListOfInts list;
 
   //verify that search returns false on empty list
@@ -195,10 +286,22 @@ bool Test::checkSearch()
     test2 = true;
   }
 
-  return(test1 && test2);
+  //verify that search returns true on item in list
+  list.addFront(18);
+  if(list.search(18) == true)
+  {
+    test3 = true;
+  }
+  else
+  {
+    test3 = false;
+  }
+
+  return(test1 && test2 && test3);
 }
 
 
+//////////////////////////
 bool Test::removeFromBack()
 {
   bool test1;
@@ -235,6 +338,7 @@ bool Test::removeFromBack()
 }
 
 
+///////////////////////////
 bool Test::removeFromFront()
 {
   bool test1;

@@ -19,6 +19,7 @@ public:
 
 private:
   bool emptyList();
+  bool checkSize();
   bool addToFront();
   bool addToBack();
   bool checkSearch();
