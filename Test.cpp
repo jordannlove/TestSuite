@@ -371,5 +371,5 @@ bool Test::removeFromFront()
     return (test2);
   }
 
-  return(test1);
+  return(test1 && test2);
 }
