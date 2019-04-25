@@ -46,6 +46,16 @@ void Test::runTests()
   {
     std::cout << "FAILED\n";
   }
+
+  std::cout << "checkSearch: ";
+  if(checkSearch() == true)
+  {
+    std::cout << "passed\n";
+  }
+  else
+  {
+    std::cout << "FAILED\n";
+  }
 }
 
 
@@ -105,4 +115,33 @@ bool Test::addToBack()
   }
 
   return(test1);
+}
+
+
+bool Test::checkSearch()
+{
+  bool test1 = true;
+  bool test2;
+  LinkedListOfInts list;
+
+  //verify that search returns false on empty list
+  for(int x = -10; x <= 10; x++)
+  {
+    if(list.search(x) == true)
+    {
+      test1 = false;
+    }
+  }
+
+  //verify that search returns false on incorrect data type
+  if(list.search(7.1234) == true)
+  {
+    test2 = false;
+  }
+  else
+  {
+    test2 = true;
+  }
+
+  return(test1 && test2);
 }

@@ -21,7 +21,7 @@ private:
   bool emptyList();
   bool addToFront();
   bool addToBack();
-
+  bool checkSearch();
 };
 
 #endif
