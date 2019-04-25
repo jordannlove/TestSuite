@@ -22,6 +22,8 @@ private:
   bool addToFront();
   bool addToBack();
   bool checkSearch();
+  bool removeFromBack();
+  bool removeFromFront();
 };
 
 #endif

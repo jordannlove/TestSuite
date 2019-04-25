@@ -1,1 +1,4 @@
 I anticipate the following bugs:
+
+addFront: doesn't increment size beyond initial node of linkedlist
+addBack: doesn't increment size beyond initial node of linkedlist

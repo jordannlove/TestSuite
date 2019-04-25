@@ -56,6 +56,26 @@ void Test::runTests()
   {
     std::cout << "FAILED\n";
   }
+
+  std::cout << "removeFromBack: ";
+  if(removeFromBack() == true)
+  {
+    std::cout << "passed\n";
+  }
+  else
+  {
+    std::cout << "FAILED\n";
+  }
+
+  std::cout << "removeFromFront: ";
+  if(removeFromFront() == true)
+  {
+    std::cout << "passed\n";
+  }
+  else
+  {
+    std::cout << "FAILED\n";
+  }
 }
 
 
@@ -81,6 +101,7 @@ bool Test::emptyList()
 bool Test::addToFront()
 {
   bool test1;
+  bool test2;
   LinkedListOfInts list;
 
   //see if size increments with one addFront
@@ -94,13 +115,29 @@ bool Test::addToFront()
     test1 = false;
   }
 
-  return(test1);
+  //check that addFront handles addition of 20 items
+  for(int x = 0; x < 20; x++)
+  {
+    list.addFront(x);
+  }
+  if(list.size() == 20)
+  {
+    test2 = true;
+  }
+  else
+  {
+    test2 = false;
+    return (test2);
+  }
+
+  return(test1 && test2);
 }
 
 
 bool Test::addToBack()
 {
   bool test1;
+  bool test2;
   LinkedListOfInts list;
 
   //see if size increments with one addFront
@@ -114,7 +151,22 @@ bool Test::addToBack()
     test1 = false;
   }
 
-  return(test1);
+  //check that addBack handles addition of 20 items
+  for(int x = 0; x < 20; x++)
+  {
+    list.addBack(x);
+  }
+  if(list.size() == 20)
+  {
+    test2 = true;
+  }
+  else
+  {
+    test2 = false;
+    return (test2);
+  }
+
+  return(test1 && test2);
 }
 
 
@@ -144,4 +196,76 @@ bool Test::checkSearch()
   }
 
   return(test1 && test2);
+}
+
+
+bool Test::removeFromBack()
+{
+  bool test1;
+  bool test2;
+  LinkedListOfInts list;
+
+  //check that empty list returns false
+  if(list.removeBack() == true)
+  {
+    test1 = false;
+  }
+  else
+  {
+    test1 = true;
+  }
+
+  //check that removeBack handles size with one removal
+  for(int x = 0; x < 5; x++)
+  {
+    list.addFront(x);
+  }
+  list.removeBack();
+  if(list.size() == 4)
+  {
+    test2 = true;
+  }
+  else
+  {
+    test2 = false;
+    return (test2);
+  }
+
+  return(test1 && test2);
+}
+
+
+bool Test::removeFromFront()
+{
+  bool test1;
+  bool test2;
+  LinkedListOfInts list;
+
+  //check that empty list returns false
+  if(list.removeFront() == true)
+  {
+    test1 = false;
+  }
+  else
+  {
+    test1 = true;
+  }
+
+  //check that removeFront handles size with one removal
+  for(int x = 0; x < 5; x++)
+  {
+    list.addFront(x);
+  }
+  list.removeFront();
+  if(list.size() == 4)
+  {
+    test2 = true;
+  }
+  else
+  {
+    test2 = false;
+    return (test2);
+  }
+
+  return(test1);
 }
